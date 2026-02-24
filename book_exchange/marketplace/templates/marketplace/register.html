@@ -1,0 +1,33 @@
+{% extends "marketplace/layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<h2>Register</h2>
+
+{% if message %}
+    <div class="alert alert-danger">{{ message }}</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" type="email" name="email" placeholder="School Email">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" type="password" name="password" placeholder="Password">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+    </div>
+
+    <button class="btn btn-success">Register</button>
+</form>
+{% endblock %}

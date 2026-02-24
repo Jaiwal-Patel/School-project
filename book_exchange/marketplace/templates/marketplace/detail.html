@@ -1,0 +1,33 @@
+{% extends "marketplace/layout.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block body %}
+<h2>{{ book.title }}</h2>
+{% if book.image %}
+    <img src="{{ book.image.url }}" class="img-fluid mb-3" style="max-height: 300px;">
+{% endif %}
+
+<ul class="list-group mb-3">
+    <li class="list-group-item"><strong>Subject:</strong> {{ book.subject }}</li>
+    <li class="list-group-item"><strong>Grade:</strong> {{ book.grade }}</li>
+    <li class="list-group-item"><strong>Condition:</strong> {{ book.condition }}</li>
+    <li class="list-group-item">
+        <strong>Price:</strong>
+        {% if book.is_free %}FREE{% else %}AED {{ book.price }}{% endif %}
+    </li>
+</ul>
+
+<p>{{ book.description }}</p>
+
+<hr>
+
+<h5>Seller Contact</h5>
+<p>
+    Name: {{ book.seller.username }}<br>
+    Email: {{ book.seller.email }}<br>
+    Phone Number: {{book.phone_number}}(You may use this for WhatsApp)
+    
+
+</p>
+{% endblock %}

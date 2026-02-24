@@ -1,0 +1,59 @@
+{% extends "marketplace/layout.html" %}
+
+{% block title %}List a Book{% endblock %}
+
+{% block body %}
+<h2 class="mb-4">List a Book</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.subject.label_tag }}
+        {{ form.subject }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.grade.label_tag }}
+        {{ form.grade }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.condition.label_tag }}
+        {{ form.condition }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.price.label_tag }}
+        {{ form.price }}
+        <div class="form-text">Leave empty if free</div>
+    </div>
+
+    <div class="form-check mb-3">
+        {{ form.is_free }}
+        {{ form.is_free.label_tag }}
+    </div>
+    <div class="mb-3">
+        {{ form.phone_number.label_tag }}
+        {{ form.phone_number }}
+    <div class="form-text">Optional — buyers can contact you on WhatsApp</div>
+    </div>
+
+    <div class="mb-3">
+        {{ form.image.label_tag }}
+        {{ form.image }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}
