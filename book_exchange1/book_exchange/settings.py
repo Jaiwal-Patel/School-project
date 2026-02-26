@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-os$bwq967_7vjlo7p7y$j9c*)t-*pz-0i^v+r8&!k!3*ic300h
 DEBUG = True
 
 ALLOWED_HOSTS = ['school-project-tpl0.onrender.com']
-
+ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -129,3 +132,9 @@ INSTALLED_APPS += [
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_ROOT = BASE_DIR / "staticfiles"
+import dj_database_url
+DATABASES = {
+     'default': dj_database_url.config(conn_max_age=600)
+}
+import os
+SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-only-fallback')
