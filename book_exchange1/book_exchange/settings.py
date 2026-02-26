@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,5 +137,5 @@ import dj_database_url
 DATABASES = {
      'default': dj_database_url.config(conn_max_age=600)
 }
-import os
+
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-only-fallback')
