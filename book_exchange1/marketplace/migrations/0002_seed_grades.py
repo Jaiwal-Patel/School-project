@@ -13,7 +13,7 @@ def create_grades(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("marketplace", "000X_previous_migration"),
+        ("marketplace", "0001_initial.py"),
     ]
 
     operations = [
