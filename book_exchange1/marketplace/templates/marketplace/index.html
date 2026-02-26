@@ -4,6 +4,19 @@
 
 {% block body %}
 <h2 class="mb-4">Available Books</h2>
+<form method="GET" class="mb-4">
+    <select name="grade" class="form-select w-25 d-inline">
+        <option value="">All Grades</option>
+        {% for grade in grades %}
+            <option value="{{ grade.id }}"
+                {% if selected_grade == grade.id|stringformat:"s" %}selected{% endif %}>
+                {{ grade }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
 
 {% if books %}
     <div class="row">

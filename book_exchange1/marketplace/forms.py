@@ -8,11 +8,8 @@ class BookForm(forms.ModelForm):
             "title",
             "subject",
             "grade",
-            "price",
             "is_free",
             "condition",
-            "phone_number",
-            "image",
             "description"
         ]
 

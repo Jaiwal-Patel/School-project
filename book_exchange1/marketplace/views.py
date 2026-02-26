@@ -8,12 +8,28 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-def index(request):
+'''def index(request):
     books = Book.objects.filter(available=True).order_by('-created_at')
     grades = Grade.objects.all()
+    
     return render(request, "marketplace/index.html", {
         "books": books,
         "grades": grades
+    })'''
+def index(request):
+    grade_id = request.GET.get("grade")
+
+    books = Book.objects.filter(available=True).order_by("-created_at")
+
+    if grade_id:
+        books = books.filter(grade_id=grade_id)
+
+    grades = Grade.objects.all()
+
+    return render(request, "marketplace/index.html", {
+        "books": books,
+        "grades": grades,
+        "selected_grade": grade_id
     })
 
 
